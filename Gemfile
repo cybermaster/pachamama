@@ -5,6 +5,9 @@ gem 'rails', '3.2.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'twitter-bootstrap-rails'
+
+
 group :development, :test do
   gem 'sqlite3'
 end
@@ -23,7 +26,6 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
