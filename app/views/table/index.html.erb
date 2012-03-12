@@ -1,0 +1,26 @@
+<h1>Tables</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Created at</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tables.each do |table| %>
+      <tr>
+        <td><%= table.id %></td>
+        <td><%= link_to table.name, table_path(table) %></td>
+        <td><%= table.created_at %></td>
+        <td>
+          <%= link_to 'Edit', edit_table_path(table), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', table_path(table), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_table_path, :class => 'btn btn-primary' %>

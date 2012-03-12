@@ -1,0 +1,17 @@
+<h1>Table</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @table.name %>
+</p>
+
+<p>
+  <b>Tablenumber</b><br>
+  <%= @table.tableNumber %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', table_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_table_path(@table), :class => 'btn' %>
+  <%= link_to 'Delete', table_path(@table), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
