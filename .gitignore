@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore intelej
+/*.iml
+.idea/*
+.idea/copyright/profiles_settings.xml
+.idea/scopes/scope_settings.xml
