@@ -17,5 +17,4 @@
 # Ignore intelej
 /*.iml
 .idea/*
-.idea/copyright/profiles_settings.xml
-.idea/scopes/scope_settings.xml
+.idea/*/*
