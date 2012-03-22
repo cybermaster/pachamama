@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TableCaptain do
-  describe "add a table captain" do
+  describe "add a table cpatain" do
     before :each do  
       admin = Factory(:admin)
       tc = Factory(:tableCaptain)
