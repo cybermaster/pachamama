@@ -1,4 +1,6 @@
 Pacha::Application.routes.draw do
+  devise_for :users
+
   resources :tables
 
   # The priority is based upon order of creation:
