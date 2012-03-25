@@ -1,7 +1,13 @@
 Pacha::Application.routes.draw do
+  
+  #Bill: route for devise
   devise_for :users
 
+  #Bill: route for tables
   resources :tables
+
+  #Bill: route for defined root_url
+  root :to => "tables#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
