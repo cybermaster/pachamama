@@ -9,22 +9,17 @@ gem 'rails', '3.2.0'
 gem 'twitter-bootstrap-rails'
 #Bill: add devise authentication solution
 gem 'devise'
-
  
 group :development, :test do
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'cucumber-rails'
-  gem 'cucumber-rails-training-wheels'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels', :require => false
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
   gem 'rspec-rails'
   gem 'simplecov'
-end
-
-group :development, :test do
-  gem 'sqlite3'
 end
 
 group :production do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin::AdminController do
+describe AdminController do
   describe "testing the functionalities to add and edit table captains" do
     it "should add a table captain into the database" do
       @message = {:login => "andrian@stern.com", :name => "Ad", :password => "not-a-secret"}
@@ -47,7 +47,7 @@ describe Admin::AdminController do
       groupNum = 876 
       Admin.should_receive(:assign_table)
       
-      post :assign_table. {:admin_id => admin.id, :tableCaptain_id => tc.id, :tableNumber => tableNum, :groupNumber => groupNum}
+      post :assign_table, {:admin_id => admin.id, :tableCaptain_id => tc.id, :tableNumber => tableNum, :groupNumber => groupNum}
       
       response.should redirect_to :index
     end
