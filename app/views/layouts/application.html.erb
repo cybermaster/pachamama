@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Table</title>
+  <title>Tables</title>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -22,7 +22,9 @@
           <ul class="nav">
             <li><%= link_to "Browse Tables", tables_path %></li>
             <li><%= link_to "Contact Us" %></li>
-
+			<li><%= link_to "Sign out", destroy_user_session_path %></li>
+			<li><%= link_to "Sign in", new_user_session_path %></li>
+			<li><%= link_to "Sign up", new_user_registration_path %></li>
           </ul>
         </div>
       </div>
@@ -30,6 +32,12 @@
   </div>
 
   <div class="container">
+	<% flash.each do |name, msg| %>
+	  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+	    <a class="close" data-dismiss="alert">×</a>
+	    <%= msg %>
+	  </div>
+	<% end %>
     <div class="row">
       <div class="span9"><%= yield %></div>
       <div class="span3">

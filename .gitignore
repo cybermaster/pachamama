@@ -14,8 +14,10 @@
 /log/*.log
 /tmp
 
-# Ignore intelej
-/*.iml
+# Ignore intellij and OS temp files
+*.iml
 .idea/*
 .idea/*/*
 *~
+.DS_Store
+
