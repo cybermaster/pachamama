@@ -4,6 +4,6 @@ class TableCaptain < ActiveRecord::Base
   has_many :guests
   validate :firstName, :presents => true
   validate :password, :presents => true
-  validate :email, :presents => true
-  validates_uniqueness_of :email
+  validate :login, :presents => true
+  validates_uniqueness_of :login
 end
