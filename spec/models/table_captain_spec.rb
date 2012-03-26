@@ -39,8 +39,8 @@ describe TableCaptain do
       old_tc.login.should == tc.login
       old_tc.name.should == tc.name
       old_tc.password.should == tc.password
-      old_tc.name.should not == tc2.name
-      old_tc.password.should not == tc2.password
+      old_tc.name.should.not == tc2.name
+      old_tc.password.should.not == tc2.password
     end
     
     it "should edit a table captain" do

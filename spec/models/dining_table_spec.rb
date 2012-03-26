@@ -25,7 +25,7 @@ describe DiningTable do
       
       table = tc.diningTables.find_by_tableNumber(tableNumber)
       table.groupNumber.should == groupNum
-      table.groupNumber.should not == groupNum2
+      table.groupNumber.should.not == groupNum2
     end
     
     
@@ -39,7 +39,7 @@ describe DiningTable do
       
       table = tc.diningTables.find_by_groupNumber(groupNum)
       table.tableNumber.should == tableNum
-      table.tableNumber.should not == tableNum2
+      table.tableNumber.should.not == tableNum2
     end
   end
 end

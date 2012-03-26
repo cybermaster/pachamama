@@ -39,8 +39,8 @@ describe Admin do
       old_ad.login.should == new_ad.login
       old_ad.name.should == new_ad.name
       old_ad.password.should == new_ad.password
-      old_ad.name.should not == ad2.name
-      old_ad.password.should not == ad2.password
+      old_ad.name.should.not == ad2.name
+      old_ad.password.should.not == ad2.password
     end
   end
 end

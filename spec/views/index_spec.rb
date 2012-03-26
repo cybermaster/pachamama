@@ -12,7 +12,7 @@ describe "index.html.haml" do
     tc = Factory(:tableCaptain)
     
     render
-    rendered.should not contain("Add Table Captain")
+    rendered.should.not contain("Add Table Captain")
   end
   it "should show the add table button when the user is an admin" do
     admin = Factory(:admin)
@@ -25,6 +25,6 @@ describe "index.html.haml" do
     tc = Factory(:tableCaptain)
     
     render
-    rendered.should not contain("Assign Table")
+    rendered.should.not contain("Assign Table")
   end
 end
