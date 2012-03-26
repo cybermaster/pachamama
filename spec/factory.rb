@@ -6,6 +6,6 @@ end
 
 Factory.define :tableCaptain do |tc|
   tc.login 'steve@169.com'
-  tc.name 'Steven'
+  tc.first_name 'Steven'
   tc.password 'secret'
 end

@@ -26,7 +26,7 @@ describe TableCaptain do
       
       error.should == false
       
-      tc2 = Factory(:tableCaptain, :name => "Adrian", :password => "wei")
+      tc2 = Factory(:tableCaptain, :first_name => "Adrian", :password => "wei")
       
       TableCaptain.should_receive(:find_by_login).with(tc2.login).and_return(tc)
       error = admin.add_table_captain(tc2.login, tc2.name, tc2.password)
@@ -49,7 +49,7 @@ describe TableCaptain do
       
       error.should == false
       
-      tc2 = Factory(:tableCaptain, :name => "Adrian", :password => "wei")
+      tc2 = Factory(:tableCaptain, :first_name => "Adrian", :password => "wei")
       
       TableCaptain.should_receive(:find_by_login).with(tc2.login).and_return(tc)
       admin.edit_table_captain(tc2.login, tc2.name, tc2.password)
