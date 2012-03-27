@@ -4,5 +4,4 @@ class Admin < ActiveRecord::Base
   validate :name, :presents => true
   validate :password, :presents => true
   validate :login, :presents => true
-
 end
