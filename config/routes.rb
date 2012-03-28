@@ -7,8 +7,9 @@ Pacha::Application.routes.draw do
   resources :tables
 
   #Bill: route for defined root_url
-  #root :to => "tables#index"
-
+  root :to => 'tables#index'
+  #map.root :controller => 'tables'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
