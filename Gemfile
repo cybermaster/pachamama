@@ -17,5 +17,5 @@ gem "capybara", ">= 1.1.2", :group => :test
 gem "database_cleaner", ">= 0.7.1", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "devise", ">= 2.1.0.rc"
-gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
+gem "twitter-bootstrap-rails", ">= 2.0.3"#, :group => :assets
 gem 'pg', :group => :production
