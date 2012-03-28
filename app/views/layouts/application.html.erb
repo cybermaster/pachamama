@@ -29,7 +29,7 @@
       <div class="container">
         <div class="content">
            <div class="row">
-            <div class="span12">
+            <div class="span9">
               <% flash.each do |name, msg| %>
                 <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
                   <a class="close" data-dismiss="alert">×</a>
@@ -38,6 +38,11 @@
               <% end %>
               <%= yield %>
             </div>
+			<div class="span3">
+				<h2>About Us</h2>
+		        Generating a Critical Mass of Conscious Commitment
+				Empowered by our partnership with indigenous people, The Pachamama Alliance inspires and galvanizes the human family to generate a critical mass of conscious commitment to a thriving, just and sustainable way of life on Earth.
+		      </div>
           </div>
           <footer>
           </footer>
