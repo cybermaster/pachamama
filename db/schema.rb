@@ -11,61 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120326004334) do
-
-  create_table "admins", :force => true do |t|
-    t.string   "login"
-    t.string   "name"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "dining_tables", :force => true do |t|
-    t.integer  "tableNumber"
-    t.integer  "groupNumber"
-    t.integer  "admin_id"
-    t.integer  "tableCaptain_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "dining_tables", ["admin_id"], :name => "index_dining_tables_on_admin_id"
-  add_index "dining_tables", ["tableCaptain_id"], :name => "index_dining_tables_on_tableCaptain_id"
-
-  create_table "guests", :force => true do |t|
-    t.string   "lastName"
-    t.string   "firstName"
-    t.string   "email"
-    t.string   "phone"
-    t.boolean  "confirm"
-    t.text     "notes"
-    t.integer  "diningTable_id"
-    t.integer  "tableCaptain_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "guests", ["diningTable_id"], :name => "index_guests_on_diningTable_id"
-  add_index "guests", ["tableCaptain_id"], :name => "index_guests_on_tableCaptain_id"
-
-  create_table "table_captains", :force => true do |t|
-    t.string   "firsName"
-    t.string   "lastName"
-    t.string   "password"
-    t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "first_name"
-    t.string   "login"
-  end
-
-  create_table "tables", :force => true do |t|
-    t.string   "name"
-    t.decimal  "tableNumber"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+ActiveRecord::Schema.define(:version => 20120328051441) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -80,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120326004334) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

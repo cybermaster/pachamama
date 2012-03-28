@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Pacha::Application.load_tasks
+Pacha2::Application.load_tasks

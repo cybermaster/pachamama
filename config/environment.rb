@@ -2,5 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Pacha::Application.initialize!
-
+Pacha2::Application.initialize!
