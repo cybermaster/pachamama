@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.2'
-gem 'sqlite3'
+gem 'heroku'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -14,5 +15,7 @@ gem "cucumber-rails", ">= 1.3.0", :group => :test
 gem "capybara", ">= 1.1.2", :group => :test
 gem "database_cleaner", ">= 0.7.1", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
+gem 'sqlite3', :group => :development
 gem "devise", ">= 2.1.0.rc"
-gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
+gem "twitter-bootstrap-rails", ">= 2.0.3"#, :group => :assets
+gem 'pg', :group => :production
