@@ -1,7 +1,4 @@
 Pacha2::Application.routes.draw do
-  resources :roles
-  resources :users#, :only => :show
-
 
   authenticated :user do
     root :to => 'home#index'
