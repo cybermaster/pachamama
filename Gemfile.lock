@@ -213,7 +213,7 @@ DEPENDENCIES
   jquery-rails
   launchy (>= 2.0.5)
   pg
-  rails (= 3.2.3)
+  rails (~> 3.2.3)
   rspec-rails (>= 2.9.0.rc2)
   sass-rails (~> 3.2.3)
   simplecov
