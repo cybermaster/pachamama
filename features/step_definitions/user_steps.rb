@@ -27,14 +27,16 @@ def delete_user
   @user.destroy unless @user.nil?
 end
 
-def create_adminstrative
-  @user ||= {:name => "Testy McUserton", :email => "example@example.com",
-             :password => "please", :password_confirmation => "please", :role => "admin"}
+def create_administrative
+  @role ||= Role.first conditions: {:name => "Admin"}
+  create_user
+  @user ||= {:role => @role}
 end
 
 def create_table_captain
-  @user ||= {:name => "Testy McUserton", :email => "example@example.com",
-             :password => "please", :password_confirmation => "please", :role => "table_captain"}
+  @role ||= Role.first conditions: {:name => "tableCaptain"}
+  create_user
+  @user ||= {:role => @role}
 end
 
 def sign_up
@@ -88,8 +90,12 @@ When /^I sign out$/ do
   visit '/users/sign_out'
 end
 
-When /^I am "(.*)" user/ do |role|
+When /^I am administrative/ do
+  create_administrative
+end
 
+When /^I am table captain/ do
+  create_table_captain
 end
 
 When /^I sign up with valid user data$/ do
@@ -202,4 +208,8 @@ end
 Then /^I should see my name$/ do
   create_user
   page.should have_content @user[:name]
+end
+
+Then /^I should see "(.*)"/ do |content|
+  page.should have_content content
 end
