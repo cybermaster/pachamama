@@ -27,6 +27,16 @@ def delete_user
   @user.destroy unless @user.nil?
 end
 
+def create_adminstrative
+  @user ||= {:name => "Testy McUserton", :email => "example@example.com",
+             :password => "please", :password_confirmation => "please", :role => "admin"}
+end
+
+def create_table_captain
+  @user ||= {:name => "Testy McUserton", :email => "example@example.com",
+             :password => "please", :password_confirmation => "please", :role => "table_captain"}
+end
+
 def sign_up
   delete_user
   visit '/users/sign_up'
@@ -76,6 +86,10 @@ end
 
 When /^I sign out$/ do
   visit '/users/sign_out'
+end
+
+When /^I am "(.*)" user/ do |role|
+
 end
 
 When /^I sign up with valid user data$/ do
