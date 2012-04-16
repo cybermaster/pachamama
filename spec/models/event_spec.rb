@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Event do
   describe "Creating events" do
     before :each do  
-      admin = User.create!(Factory(:user))
-      ad_role = Role.create!(Factory(:role, :name => "admin"))
+      admin = User.create!(FactoryGirl.create(:user))
+      ad_role = Role.create!(FactoryGirl.create(:role, :name => "admin"))
       ad_role.users << admin
-      tc = User.create!(Factory(:user, :login => "jess", :name => "Jessica", :password => "Ho"))
-      tc_role = Role.create!(Factory(:role, :name => "tableCaptain"))
+      tc = User.create!(FactoryGirl.create(:user, :login => "jess", :name => "Jessica", :password => "Ho"))
+      tc_role = Role.create!(FactoryGirl.create(:role, :name => "tableCaptain"))
       tc_role.users << tc
-      event = Factory(:event)
+      event = FactoryGirl.create(:event)
     end
     it "should be created by admins, not by others" do
       Event.should_receive(:create!)

@@ -105,10 +105,10 @@ end
 describe "Users as admins" do
   describe "testing the functionalities to add admins" do
     before :each do  
-      admin = User.create!(Factory(:user))
-      ad_role = Role.create!(Factory(:role, :name => "admin"))
+      admin = User.create!(FactoryGirl.create(:user))
+      ad_role = Role.create!(FactoryGirl.create(:role, :name => "admin"))
       ad_role.users << admin
-      new_ad = Factory(:user, :login => "jess", :name => "Jessica", :password => "Ho")
+      new_ad = FactoryGirl.create(:user, :login => "jess", :name => "Jessica", :password => "Ho")
     end
     it "should add an admin" do
       User.should_receive(:find_by_login).with(new_ad.login).and_return(nil)
@@ -131,7 +131,7 @@ describe "Users as admins" do
       
       error.should == false
       
-      ad2 = Factory(:User, :name => "Brian", :password => "lin")
+      ad2 = FactoryGirl.create(:User, :name => "Brian", :password => "lin")
       
       User.should_receive(:find_by_login).with(ad2.login).and_return(new_ad)
       error = admin.add_table_captain(ad2.login, ad2.name, ad2.password)
@@ -154,11 +154,11 @@ end
 describe "as table captains" do
   describe "add a table captain" do
     before :each do  
-      admin = User.create!(Factory(:user))
-      ad_role = Role.create!(Factory(:role, :name => "admin"))
+      admin = User.create!(FactoryGirl.create(:user))
+      ad_role = Role.create!(FactoryGirl.create(:role, :name => "admin"))
       ad_role.users << admin
-      tc = Factory(:user, :login => "jess", :name => "Jessica", :password => "Ho")
-      tc_role = Role.create!(Factory(:role, :name => "tableCaptain"))
+      tc = FactoryGirl.create(:user, :login => "jess", :name => "Jessica", :password => "Ho")
+      tc_role = Role.create!(FactoryGirl.create(:role, :name => "tableCaptain"))
       tc_role.users << tc
     end
     it "should add a table captain" do
@@ -183,7 +183,7 @@ describe "as table captains" do
       
       error.should == false
       
-      tc2 = Factory(:user, :first_name => "Adrian", :password => "wei")
+      tc2 = FactoryGirl.create(:user, :first_name => "Adrian", :password => "wei")
       
       User.should_receive(:find_by_login).with(tc2.login).and_return(tc)
       error = admin.add_table_captain(tc2.login, tc2.name, tc2.password)
@@ -208,7 +208,7 @@ describe "as table captains" do
       
       error.should == false
       
-      tc2 = Factory(:user, :first_name => "Adrian", :password => "wei")
+      tc2 = FactoryGirl.create(:user, :first_name => "Adrian", :password => "wei")
       
       User.should_receive(:find_by_login).with(tc2.login).and_return(tc)
       admin.edit_table_captain(tc2.login, tc2.name, tc2.password)
@@ -227,7 +227,7 @@ describe "as table captains" do
       
       error.should == false
       
-      tc2 = Factory(:user, :first_name => "Adrian", :password => "wei")
+      tc2 = FactoryGirl.create(:user, :first_name => "Adrian", :password => "wei")
       
       User.should_receive(:find_by_login).with(tc2.login).and_return(tc)
       tc.edit(tc2.name, tc2.password)
