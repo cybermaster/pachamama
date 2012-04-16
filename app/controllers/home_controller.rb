@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @users = User.all
+    @diningTables = DiningTable.all
 
   end
 end

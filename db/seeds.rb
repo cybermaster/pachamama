@@ -22,3 +22,7 @@ guest1 = User.create! :name => 'First guest User', :email => 'guest@test.com', :
 puts 'New guest user created: ' << guest1.name
 guest = Role.create! :name => "guest"
 guest.users << guest1
+
+#remove this seed when we are in production
+# DiningTable.create! :physicalNumber => '1' :groupNumber => '1', :user_id => admin1.id, :event_id => '1'
+DiningTable.create! :physical_number => 1, :group_number => 1, :user_id => admin1.id, :event_id => 1
