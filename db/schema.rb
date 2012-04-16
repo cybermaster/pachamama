@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120416015601) do
 
   create_table "dining_tables", :force => true do |t|
-    t.integer  "physicalNumber"
-    t.integer  "groupNumber"
+    t.integer  "physical_number"
+    t.integer  "group_number"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at",     :null => false
