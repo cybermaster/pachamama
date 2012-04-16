@@ -62,10 +62,10 @@ describe "AdminController" do
   
   describe "testing table assignments" do
     before :each do  
-      admin = User.create!(Factory(:user))
-      ad_role = Role.create!(Factory(:role, :name => "admin"))
+      admin = User.create!(FactoryGirl.create(:user))
+      ad_role = Role.create!(FactoryGirl.create(:role, :name => "admin"))
       ad_role.users << admin
-      new_ad = Factory(:user, :login => "jess", :name => "Jessica", :password => "Ho")
+      new_ad = FactoryGirl.create(:user, :login => "jess", :name => "Jessica", :password => "Ho")
     end
     it "should assign a table to a table captain" do   
       tableNum = 999
