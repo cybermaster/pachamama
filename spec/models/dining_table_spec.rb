@@ -3,13 +3,13 @@ require 'spec_helper'
 describe DiningTable do
   describe "assigning tables" do
     before :each do  
-      admin = User.create!(Factory(:user))
-      ad_role = Role.create!(Factory(:role, :name => "admin"))
+      admin = User.create!(FactoryGirl.create(:user))
+      ad_role = Role.create!(FactoryGirl.create(:role, :name => "admin"))
       ad_role.users << admin
-      tc = User.create!(Factory(:user, :login => "jess", :name => "Jessica", :password => "Ho"))
-      tc_role = Role.create!(Factory(:role, :name => "tableCaptain"))
+      tc = User.create!(FactoryGirl.create(:user, :login => "jess", :name => "Jessica", :password => "Ho"))
+      tc_role = Role.create!(FactoryGirl.create(:role, :name => "tableCaptain"))
       tc_role.users << tc
-      event = Event.create!(Factory(:event))
+      event = Event.create!(FactoryGirl.create(:event))
     end
     it "should assign a table to tc" do
       tableNum = 777
