@@ -10,5 +10,7 @@ Pacha2::Application.routes.draw do
   devise_for :users
   resources :roles
   resources :users#, :only => :show
+  resources :dining_tables
+
 
 end

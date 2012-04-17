@@ -1,0 +1,23 @@
+<h1>Tables</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Group Number</th>
+        <th>User ID</th>
+        <th>Event ID</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @dining_tables.each do |diningTable| %>
+        <tr>
+            <td><%= diningTable.id %></td>
+            <td><%= link_to diningTable.group_number, edit_dining_table_path(diningTable.id) %></td>
+            <td>
+            <%= link_to 'Edit', edit_dining_table_path(diningTable.id), :class => 'btn btn-mini' %>
+            <%= link_to 'Destroy', dining_table_path(diningTable), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

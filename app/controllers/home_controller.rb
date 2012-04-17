@@ -3,7 +3,14 @@ class HomeController < ApplicationController
 
   def index
     @users = User.all
-    @diningTables = DiningTable.all
+    @current_user = current_user
+
+    if current_user.role?("Admin")
+      @dining_tables = DiningTable.all
+    else
+      @dining_tables = DiningTable.where("user_id = ?", current_user.id)
+    end
+
 
   end
 end

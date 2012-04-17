@@ -1,6 +1,7 @@
 <h3>Home</h3>
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
-
-<%= render "dinningTables" %>
 <% end %>
+<%= link_to 'Add Table', new_dining_table_path, :class => 'btn btn-primary' %>
+
+<%= render "dining_tables/dining_tables" %>
