@@ -9,8 +9,9 @@ Pacha2::Application.routes.draw do
   # devise_for :users, :path_names => { :sign_up => "register"}
   devise_for :users
   resources :roles
-  resources :users#, :only => :show
   resources :dining_tables
+  resources :guests
+  resources :users#, :only => :show
 
 
 end

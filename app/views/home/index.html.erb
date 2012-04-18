@@ -1,7 +1,4 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if current_user.role?("Admin") %>
+    <%= link_to 'Add Table', new_dining_table_path, :class => 'btn btn-primary' %>
 <% end %>
-<%= link_to 'Add Table', new_dining_table_path, :class => 'btn btn-primary' %>
-
 <%= render "dining_tables/dining_tables" %>

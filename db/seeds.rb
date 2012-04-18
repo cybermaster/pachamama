@@ -25,4 +25,6 @@ guest.users << guest1
 
 #remove this seed when we are in production
 # DiningTable.create! :physicalNumber => '1' :groupNumber => '1', :user_id => admin1.id, :event_id => '1'
-DiningTable.create! :physical_number => 1, :group_number => 1, :user_id => admin1.id, :event_id => 1
+event = Event.create! :date => Date.civil(2012, 5, 5), :location => 'UC Berkeley', :name => 'UC Berkeley Lunch'
+DiningTable.create! :physical_number => 1, :group_number => 1, :user_id => admin1.id, :event_id => event.id
+

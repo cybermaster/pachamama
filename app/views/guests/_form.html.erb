@@ -1,0 +1,46 @@
+<%= form_for @guest, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+        <legend><%= controller.action_name.capitalize %> Guest</legend>
+
+        <div class="control-group">
+            <%= f.label :name, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :name, :class => 'text_field' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :phone, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.telephone_field :phone, :class => 'text_field' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :email, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.email_field :email, :class => 'text_field' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <%= f.label :note, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :note, :class => 'text_field' %>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <%#= f.hidden_field :dining_table, :class => 'text_field' %>
+                <%= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <%= f.submit nil, :class => 'btn btn-primary' %>
+            <%= link_to 'Cancel', root_path, :class => 'btn' %>
+        </div>
+    </fieldset>
+<% end %>
+

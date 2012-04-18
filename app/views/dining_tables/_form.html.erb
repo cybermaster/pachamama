@@ -3,16 +3,16 @@
         <legend><%= controller.action_name.capitalize %> Table</legend>
 
         <div class="control-group">
-            <%= f.label :event_id, :class => 'control-label' %>
+            <%= f.label "event", :class => 'control-label' %>
             <div class="controls">
-                <%= collection_select(:user, :id, Event.all, :id, :name) %>
+                <%= collection_select(:event, :id, Event.all, :id, :name) %>
             </div>
         </div>
 
         <div class="control-group">
             <%= f.label :group_number, :class => 'control-label' %>
             <div class="controls">
-                <%= f.text_field :group_number, :class => 'text_field' %>
+                <%= f.text_field :group_number, :class => 'text_field', :readonly => true%>
             </div>
         </div>
 
