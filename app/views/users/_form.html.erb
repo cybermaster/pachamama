@@ -18,7 +18,7 @@
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <% if @current_method == "new" %>
+  <% if @current_method == "new" or "edit" %>
     <div class="field">
       <%= f.label :password %><br />
       <%= f.password_field :password %>

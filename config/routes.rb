@@ -12,7 +12,7 @@ Pacha2::Application.routes.draw do
   resources :users#, :only => :show
 
   as :users do
-    get "/new/edit" => "users#edit", :as => :edit_user_registeration
+    get "/edit/user" => "users#edit", :as => :edit_user_registeration
   end
 
 end
