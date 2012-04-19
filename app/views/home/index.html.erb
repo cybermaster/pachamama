@@ -1,14 +1,27 @@
 <h3>Home</h3>
-<% if can? :read, @user %>
+<br />
+
+
+<table>
+    <tr>
+        <th> Email </th>
+        <th> Name </th>
+    </tr>
     <% @users.each do |user| %>
-      <% if user.role? :captain %>
-        <p>User:  <%=link_to user.name, user %></p>
-      <% end %>
+        <tr>
+            <td><%= user.email %></td>
+            <td><%= user.name %></td>
+            <td><%= link_to 'Show', user %></td>
+            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+            <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+        </tr>
     <% end %>
+</table>
 
-<% end %>
+<br />
 
-<% if can? :read, @user %>
+
+<% if can? :manage, @user %>
         <p><%= link_to "Create User", new_user_path %></p>
 <% end %>
 
