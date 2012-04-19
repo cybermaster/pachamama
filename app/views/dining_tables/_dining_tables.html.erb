@@ -16,7 +16,8 @@
             <td>
             <% if current_user.role?("Admin")%>
                     <%= link_to 'Edit', edit_dining_table_path(diningTable.id), :class => 'btn btn-mini' %>
-                    <%= link_to 'Destroy', dining_table_path(diningTable), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+                    <%= link_to 'Delete', dining_table_path(diningTable, :event => diningTable.event), :method => :delete,
+                                :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger'%>
             <% end %>
             </td>
         </tr>

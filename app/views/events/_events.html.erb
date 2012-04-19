@@ -1,0 +1,27 @@
+<h1>Events</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @events.each do |event| %>
+        <tr>
+            <td><%= link_to event.name, event_path(event.id) %></td>
+            <td><%= event.location %></td>
+            <td><%= event.date %></td>
+            <td>
+                <% if current_user.role?("Admin")%>
+                    <%= link_to 'Edit', edit_event_path(event.id), :class => 'btn btn-mini' %>
+                    <%= link_to 'Delete', event_path(event),
+                                :method => :delete, :confirm => "Are you sure you want to delete: #{event.name}",
+                                :class => 'btn btn-mini btn-danger' %>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

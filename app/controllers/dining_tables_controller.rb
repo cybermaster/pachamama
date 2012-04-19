@@ -55,4 +55,12 @@ class DiningTablesController < ApplicationController
       render action: "edit"
     end
   end
+
+  def destroy
+    @dining_table = DiningTable.find(params[:id])
+    @dining_table.destroy
+
+    redirect_to event_path(params[:event])
+
+  end
 end

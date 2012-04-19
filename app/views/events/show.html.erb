@@ -1,0 +1,15 @@
+<h1> <%= @event.name %> </h1>
+
+<p>
+    <b>Location</b><br>
+    <%= @event.location %>
+</p>
+
+<p>
+    <b>Date</b><br>
+    <%= @event.date %>
+</p>
+<%= render "dining_tables/dining_tables" %>
+<div class="form-actions">
+    <%= link_to 'Back', root_path, :class => 'btn'  %>
+</div>

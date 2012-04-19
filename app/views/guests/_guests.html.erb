@@ -1,0 +1,27 @@
+<h1>Guests</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Note</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @guests.each do |guest| %>
+        <tr>
+            <td><%= link_to guest.name, :controller => "guests", :action => "edit", :id => guest.id, :dining_table_id => @dining_table.id %></td>
+            <td><%= guest.phone %></td>
+            <td><%= guest.email %></td>
+            <td><%= guest.note %></td>
+            <td>
+                <%= link_to 'Edit', edit_dining_table_path(@dining_table.id), :class => 'btn btn-mini' %>
+                <%= link_to 'Remove', dining_table_path(@dining_table), :method => :delete,
+                            :confirm => "Are you sure you want to remove #{guest.name}",
+                            :class => 'btn btn-mini btn-danger' %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
