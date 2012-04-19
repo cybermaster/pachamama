@@ -26,6 +26,11 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     if user.role? :admin
           can :manage, :all
+    elsif user.role? :tableCaptain
+          can :read, :all
+          can :update, :all
+    else
+          can :read, :all
     end
     
   end

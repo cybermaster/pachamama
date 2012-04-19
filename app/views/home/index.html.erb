@@ -1,4 +1,15 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if can? :read, @user %>
+    <% @users.each do |user| %>
+      <% if user.role? :captain %>
+        <p>User:  <%=link_to user.name, user %></p>
+      <% end %>
+    <% end %>
+
 <% end %>
+
+<% if can? :read, @user %>
+        <p><%= link_to "Create User", new_user_path %></p>
+<% end %>
+
+

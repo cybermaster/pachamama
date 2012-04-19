@@ -11,4 +11,8 @@ Pacha2::Application.routes.draw do
   resources :roles
   resources :users#, :only => :show
 
+  as :users do
+    get "/new/edit" => "users#edit", :as => :edit_user_registeration
+  end
+
 end
