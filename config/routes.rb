@@ -11,7 +11,8 @@ Pacha2::Application.routes.draw do
   resources :roles
   resources :users#, :only => :show
 
-  as :users do
+  devise_scope :users do
+    put "/users" => "users#update"
     get "/edit/user" => "users#edit", :as => :edit_user_registeration
   end
 
