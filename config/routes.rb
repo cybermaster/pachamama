@@ -17,6 +17,8 @@ Pacha2::Application.routes.draw do
   devise_scope :users do
     put "/users" => "users#update"
     get "/edit/user" => "users#edit", :as => :edit_user_registeration
+    put "/assets" => "dining_tables#set_table_leader"
+
   end
 
 end

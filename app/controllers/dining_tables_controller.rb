@@ -22,6 +22,7 @@ class DiningTablesController < ApplicationController
     @dining_table = DiningTable.new
     @dining_table.group_number = DiningTable.count + 1
     @table_captains = User.all
+    @event_id = params[:event_id]
   end
 
   def create
@@ -61,6 +62,19 @@ class DiningTablesController < ApplicationController
     @dining_table.destroy
 
     redirect_to event_path(params[:event])
+
+  end
+
+  def set_table_leader
+    dining_table_info = params[:dining_table]
+    @dining_table = DiningTable.find(dining_table_info[:dining_table_id])
+
+    if @dining_table.update_attributes(:table_leader_id => params[:table_leader_id])
+      redirect_to @dining_table, notice: 'Leader was successfully set.'
+    else
+      redirect_to @dining_table, notice: 'Leader was failed set.'
+
+    end
 
   end
 end

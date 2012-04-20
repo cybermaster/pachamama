@@ -1,5 +1,3 @@
-<h1>Table</h1>
-
 <p>
     <b>Event</b><br>
     <%= @event.name %>
@@ -19,6 +17,21 @@
     <b>Physical Number</b><br>
     <%= @dining_table.physical_number %>
 </p>
+
+<p>
+    <b>Table Leader</b><br>
+    <%#= collection_select(:table_leader, :id, @dining_table.guests, :id, :name) %>
+</p>
+<%= form_for @dining_table,:url => { :action => "set_table_leader"}, :html => { :class => 'form-horizontal' } do |f| %>
+    <% form_tag :action => 'index' do %>
+    <%= select_tag "table_leader_id", options_from_collection_for_select(@dining_table.guests, :id, :name, @dining_table.table_leader_id),
+                   :onChange => 'submit()'  %>
+                <%#= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
+    <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
+
+    <% end %>
+<% end %>
+
 
 <%= render "guests/guests" %>
 <%= link_to 'Add Guest', new_guest_path( {:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>

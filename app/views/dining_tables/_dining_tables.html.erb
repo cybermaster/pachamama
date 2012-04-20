@@ -1,4 +1,3 @@
-<h1>Tables</h1>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -9,7 +8,7 @@
     <tbody>
     <% @dining_tables.each do |diningTable| %>
         <tr>
-            <td><%= link_to "Table  #{diningTable.group_number}", dining_table_path(diningTable.id) %></td>
+            <td><%= link_to "Group  #{diningTable.group_number} - #{diningTable.user.name}", dining_table_path(diningTable.id) %></td>
             <td><%= diningTable.event.name %></td>
 
 
@@ -24,4 +23,5 @@
     <% end %>
     </tbody>
 </table>
+
 

@@ -3,8 +3,9 @@ class CreateDiningTables < ActiveRecord::Migration
     create_table :dining_tables do |t|
       t.integer :physical_number
       t.integer :group_number
-      #t.references :guest
+      t.references :table_leader
       t.references :event
+      t.references :user
 
       t.timestamps
     end
