@@ -10,8 +10,8 @@
 <% @dining_tables.each do |dt| %>
   <tr>
     <td><%= dt.group_number %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
+    <td><%= link_to 'Show', dt %></td>
+    <td><%= link_to 'Edit', edit_dining_table_path(dt) %></td>
   </tr>
 <% end %>
 </table>

@@ -109,19 +109,19 @@ describe DiningTablesController do
         # specifies that the DT created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        DiningTable.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => dt.to_param, :dining_table => {'these' => 'params'}}, valid_session
+        DiningTable.any_instance.should_receive(:update_attributes)
+        put :update, {:id => dt.to_param, :dining_table => {'these' => 'params'}, :user => {:id => 1}}, valid_session
       end
 
       it "assigns the requested dining table as @dining_table" do
         dt = DiningTable.create! valid_attributes
-        put :update, {:id => dt.to_param, :dining_table => valid_attributes}, valid_session
+        put :update, {:id => dt.to_param, :dining_table => valid_attributes, :user => {:id => 1}}, valid_session
         assigns(:dining_table).should eq(dt)
       end
 
       it "redirects to the dining table" do
         dt = DiningTable.create! valid_attributes
-        put :update, {:id => role.to_param, :dining_table => valid_attributes}, valid_session
+        put :update, {:id => dt.to_param, :dining_table => valid_attributes, :user => {:id => 1}}, valid_session
         response.should redirect_to(dt)
       end
     end
@@ -131,7 +131,7 @@ describe DiningTablesController do
         dt = DiningTable.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DiningTable.any_instance.stub(:save).and_return(false)
-        put :update, {:id => dt.to_param, :dining_table => {}}, valid_session
+        put :update, {:id => dt.to_param, :dining_table => {}, :user => {:id => 1}}, valid_session
         assigns(:dining_table).should eq(dt)
       end
 
@@ -139,24 +139,9 @@ describe DiningTablesController do
         dt = DiningTable.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         DiningTable.any_instance.stub(:save).and_return(false)
-        put :update, {:id => dt.to_param, :dining_table => {}}, valid_session
+        put :update, {:id => dt.to_param, :dining_table => {}, :user => {:id => 1}}, valid_session
         response.should render_template("edit")
       end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested dining table" do
-      dt = DiningTable.create! valid_attributes
-      expect {
-        delete :destroy, {:id => dt.to_param}, valid_session
-      }.to change(DiningTable, :count).by(-1)
-    end
-
-    it "redirects to the dining tables list" do
-      dt = DiningTable.create! valid_attributes
-      delete :destroy, {:id => dt.to_param}, valid_session
-      response.should redirect_to(dining_tables_url)
     end
   end
 end

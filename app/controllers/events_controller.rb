@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     @users = User.all
     @current_user = current_user
 
-    if current_user.role?("Admin")
+    if current_user.role?("admin")
       @dining_tables = DiningTable.where("event_id = ")
     else
       @dining_tables = DiningTable.where("user_id = ?", current_user.id)
