@@ -27,14 +27,13 @@
             <%= f.label "Table Captain", :class => 'control-label' %>
             <div class="controls">
                 <%= collection_select(:user, :id, User.all, :id, :name) %>
-                <%#= collection_select(:person, :city_id, User.all, :id, :name) %>
             </div>
         </div>
 
 
         <div class="form-actions">
             <%= f.submit nil, :class => 'btn btn-primary' %>
-            <%= link_to 'Cancel', root_path, :class => 'btn' %>
+            <%= link_to 'Cancel', event_path(@dining_table.event_id), :class => 'btn' %>
         </div>
     </fieldset>
 <% end %>

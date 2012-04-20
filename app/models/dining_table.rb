@@ -4,7 +4,7 @@ class DiningTable < ActiveRecord::Base
   has_many :guests
   
   validates_presence_of :group_number#, :physical_number I don't think we need this becuase they dont assign until end
-  validates_uniqueness_of :group_number, :physical_number
+  validates_uniqueness_of :group_number#, :physical_number
   
   validate :validate_num_users
 

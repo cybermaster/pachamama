@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, :url => {:action => "create"}) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,14 +11,14 @@
     </div>
   <% end %>
   <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
-  <% if @current_method == "new" %>
+  <% if @current_method == "new" or "edit" %>
     <div class="field">
       <%= f.label :password %><br />
       <%= f.password_field :password %>
@@ -30,11 +30,17 @@
   <% end %>
   <% for role in Role.find(:all) %>
     <div>
-      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-      <%= role.name %>
+      <% if current_user.role? :admin %>
+        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+        <%= role.name %>
+      <% end %>
+
     </div>
   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
 <% end %>

@@ -20,37 +20,9 @@
     <%= @dining_table.physical_number %>
 </p>
 
-<h1>Guests</h1>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Note</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @guests.each do |guest| %>
-        <tr>
-            <td><%= link_to guest.name, :controller => "guests", :action => "edit", :id => guest.id, :dining_table_id => @dining_table.id %></td>
-            <td><%= guest.phone %></td>
-            <td><%= guest.email %></td>
-            <td><%= guest.note %></td>
-            <td>
-                <%= link_to 'Edit', edit_dining_table_path(@dining_table.id), :class => 'btn btn-mini' %>
-                <%= link_to 'Destroy', dining_table_path(@dining_table), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
-            </td>
-        </tr>
-    <% end %>
-    </tbody>
-</table>
+<%= render "guests/guests" %>
 <%= link_to 'Add Guest', new_guest_path( {:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
 
 <div class="form-actions">
-    <%= link_to 'Back', root_path, :class => 'btn'  %>
-    <% if current_user.role?("Admin")  %>
-    <%= link_to 'Edit', edit_dining_table_path(@dining_table), :class => 'btn' %>
-    <%= link_to 'Delete', dining_table_path(@dining_table), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-    <% end %>
+    <%= link_to 'Back', event_path(@dining_table.event_id), :class => 'btn'  %>
 </div>
