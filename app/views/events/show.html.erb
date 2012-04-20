@@ -10,6 +10,9 @@
     <%= @event.date %>
 </p>
 <%= render "dining_tables/dining_tables" %>
+<% if current_user.role? :admin %>
+    <%= link_to 'Add Table', new_dining_table_path(:event => @event), :class => 'btn btn-primary' %>
+<% end %>
 <div class="form-actions">
     <%= link_to 'Back', root_path, :class => 'btn'  %>
 </div>

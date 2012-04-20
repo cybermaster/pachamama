@@ -24,10 +24,5 @@
 <%= link_to 'Add Guest', new_guest_path( {:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
 
 <div class="form-actions">
-    <%= link_to 'Back', root_path, :class => 'btn'  %>
-    <% if current_user.role?("Admin")  %>
-    <%= link_to 'Edit', edit_dining_table_path(@dining_table), :class => 'btn' %>
-    <%= link_to 'Delete', dining_table_path(@dining_table), :method => 'delete',
-                :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
-    <% end %>
+    <%= link_to 'Back', event_path(@dining_table.event_id), :class => 'btn'  %>
 </div>

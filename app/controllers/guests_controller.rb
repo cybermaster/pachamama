@@ -43,4 +43,14 @@ class GuestsController < ApplicationController
       render action: "edit"
     end
   end
+
+  def destroy
+
+    @guest = Guest.find(params[:id])
+    table = @guest.dining_table.id
+    @guest.destroy
+
+    redirect_to dining_table_path(table)
+
+  end
 end
