@@ -5,17 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+admin = Role.create!(:name => "admin")
+captain = Role.create!(:name => "captain")
+guest = Role.create!(:name => "guest")
+
 puts 'SETTING UP DEFAULT Admin USER LOGIN'
-admin1 = User.create! :name => 'First Admin User', :email => 'admin@test.com', :password => 'please', :password_confirmation => 'please'
-puts 'New Admin user created: ' << admin1.name
-admin = Role.create! :name => "Admin"
-admin.users << admin1
+user1 = User.create! :name => 'Admin User', :email => 'admin@test.com', :password => 'please', :password_confirmation => 'please'
+puts 'New Admin user created: ' << user1.name
+user1.roles << admin
 
 puts 'SETTING UP DEFAULT TableCaptain USER LOGIN'
-tableCaptain1 = User.create! :name => 'First tableCaptain User', :email => 'tc@test.com', :password => 'please', :password_confirmation => 'please'
-puts 'New tableCaptain user created: ' << tableCaptain1.name
-tableCaptain = Role.create! :name => "tableCaptain"
-tableCaptain.users << tableCaptain1
+user2 = User.create! :name => 'TableCaptain User', :email => 'tc@test.com', :password => 'please', :password_confirmation => 'please'
+puts 'New tableCaptain user created: ' << user2.name
+user2.roles << captain
 
 puts 'SETTING UP DEFAULT guest USER LOGIN'
 guest1 = User.create! :name => 'First guest User', :email => 'guest@test.com', :password => 'please', :password_confirmation => 'please'

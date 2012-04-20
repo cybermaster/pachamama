@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
+  before_filter :authenticate_user!, :except => [:show, :index]
+  #load_and_authorize_resource
 
 
   # GET /users
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   # POST /users
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

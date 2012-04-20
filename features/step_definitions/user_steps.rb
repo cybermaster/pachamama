@@ -30,13 +30,13 @@ end
 def create_administrative
   @role ||= Role.first conditions: {:name => "Admin"}
   create_user
-  @user ||= {:role => @role}
+  @user ||= {:roles => @role}
 end
 
 def create_table_captain
   @role ||= Role.first conditions: {:name => "tableCaptain"}
   create_user
-  @user ||= {:role => @role}
+  @user ||= {:roles => @role}
 end
 
 def sign_up
