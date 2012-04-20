@@ -1,0 +1,21 @@
+<h1>Listing Dining Tables</h1>
+
+<table>
+  <tr>
+    <th>Group number</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dining_tables.each do |dt| %>
+  <tr>
+    <td><%= dt.group_number %></td>
+    <td><%= link_to 'Show', role %></td>
+    <td><%= link_to 'Edit', edit_role_path(role) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dining Table', new_dining_table_path %>
