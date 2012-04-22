@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120406195322) do
+=======
+ActiveRecord::Schema.define(:version => 20120417221043) do
+>>>>>>> stag
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,6 +36,37 @@ ActiveRecord::Schema.define(:version => 20120406195322) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
+<<<<<<< HEAD
+=======
+  create_table "dining_tables", :force => true do |t|
+    t.integer  "physical_number"
+    t.integer  "group_number"
+    t.integer  "table_leader_id"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.date     "date"
+    t.string   "location"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "guests", :force => true do |t|
+    t.string   "name"
+    t.integer  "phone"
+    t.string   "email"
+    t.text     "note"
+    t.integer  "dining_table_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+>>>>>>> stag
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false

@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 gem 'rails', '~> 3.2.3'
-gem 'heroku'
 gem 'cancan'
-gem 'simplecov', :require => false, :group => :test
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,3 +20,4 @@ gem 'sqlite3', :group => :development
 gem "devise", ">= 2.1.0.rc"
 gem "twitter-bootstrap-rails", ">= 2.0.3"#, :group => :assets
 gem 'pg', :group => :production
+gem 'simplecov', :require => false, :group => :test

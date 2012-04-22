@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h3>Home</h3>
 <% unless admin_signed_in? -%>
 	<p><%= link_to 'Sign in as Admin', new_admin_session_path %></p>
@@ -5,4 +6,10 @@
 
 <% @users.each do |user| %>
   <p>User: <%=link_to user.name, user %></p>
+=======
+<% if current_user.role? :admin %>
+    <%= link_to 'Add User', new_user_path, :class => 'btn btn-primary' %>
+    <%= link_to 'Add Event', new_event_path, :class => 'btn btn-primary' %>
+>>>>>>> stag
 <% end %>
+<%= render "events/events" %>
