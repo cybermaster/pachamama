@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Table</th>
+        <th>Event</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @dining_tables.each do |diningTable| %>
+        <tr>
+            <td><%= link_to "Group  #{diningTable.group_number} - #{diningTable.user.name}", dining_table_path(diningTable.id) %></td>
+            <td><%= diningTable.event.name %></td>
+
+
+            <td>
+            <% if current_user.role? :admin %>
+                    <%= link_to 'Edit', edit_dining_table_path(diningTable.id), :class => 'btn btn-mini' %>
+                    <%= link_to 'Delete', dining_table_path(diningTable, :event => diningTable.event), :method => :delete,
+                                :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger'%>
+            <% end %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+

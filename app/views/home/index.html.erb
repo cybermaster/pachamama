@@ -1,4 +1,5 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if current_user.role? :admin %>
+    <%= link_to 'Add User', new_user_path, :class => 'btn btn-primary' %>
+    <%= link_to 'Add Event', new_event_path, :class => 'btn btn-primary' %>
 <% end %>
+<%= render "events/events" %>

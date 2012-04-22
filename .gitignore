@@ -43,8 +43,6 @@ db/*.sqlite3
 .sass-cache
 /config/config.yml
 /config/database.yml
-/coverage.data
-/coverage/
 /db/*.javadb/
 /db/*.sqlite3-journal
 /doc/api/

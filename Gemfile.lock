@@ -81,11 +81,14 @@ GEM
     ffi (1.0.11)
     gherkin (2.9.3)
       json (>= 1.4.6)
+<<<<<<< HEAD
     heroku (2.24.1)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
       rest-client (~> 1.6.1)
       rubyzip
+=======
+>>>>>>> exp
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -98,7 +101,11 @@ GEM
     less (2.1.0)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.10.0)
+<<<<<<< HEAD
     less-rails (2.2.0)
+=======
+    less-rails (2.2.1)
+>>>>>>> exp
       actionpack (>= 3.1)
       less (~> 2.1.0)
     libv8 (3.3.10.4)
@@ -110,7 +117,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.2.0)
-    netrc (0.7.1)
     nokogiri (1.5.2)
     orm_adapter (0.0.7)
     pg (0.13.2)
@@ -140,8 +146,6 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -209,7 +213,6 @@ DEPENDENCIES
   devise (>= 2.1.0.rc)
   email_spec (>= 1.2.1)
   factory_girl_rails (>= 2.0.0.rc)
-  heroku
   jquery-rails
   launchy (>= 2.0.5)
   pg
