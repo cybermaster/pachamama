@@ -4,7 +4,12 @@ Feature: Sign up
   I want to be able to sign up
 
     Background:
-      Given I am not logged in
+      Given I logged in as admin
+      When I return to the site
+      And I should see a link "Add User"
+      And I click "Add User"
+
+      #And I am at create user page
 
     Scenario: User signs up with valid data
       When I sign up with valid user data

@@ -1,5 +1,8 @@
 <% if current_user.role? :admin %>
+    <h2>Admin</h2>
     <%= link_to 'Add User', new_user_path, :class => 'btn btn-primary' %>
     <%= link_to 'Add Event', new_event_path, :class => 'btn btn-primary' %>
+<% else %>
+    <h2>Captain</h2>
 <% end %>
 <%= render "events/events" %>
