@@ -4,7 +4,12 @@ Feature: Sign up
   I want to be able to sign up
 
     Background:
-      Given I am not logged in
+      Given I logged in as admin
+      When I return to the site
+      And I should see a link "Add User"
+      And I click "Add User"
+
+      #And I am at create user page
 
     Scenario: User signs up with valid data
       When I sign up with valid user data
@@ -12,16 +17,16 @@ Feature: Sign up
       
     Scenario: User signs up with invalid email
       When I sign up with an invalid email
-      Then I should see an invalid email message
+      Then I should see an invalid message
 
     Scenario: User signs up without password
       When I sign up without a password
-      Then I should see a missing password message
+      Then I should see an invalid message
 
     Scenario: User signs up without password confirmation
       When I sign up without a password confirmation
-      Then I should see a missing password confirmation message
+      Then I should see an invalid message
 
     Scenario: User signs up with mismatched password and confirmation
       When I sign up with a mismatched password confirmation
-      Then I should see a mismatched password message
+      Then I should see an invalid message

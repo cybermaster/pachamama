@@ -1,8 +1,7 @@
 ### UTILITY METHODS ###
-
 def create_visitor
   @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
-    :password => "please", :password_confirmation => "please" }
+    :password => "please", :password_confirmation => "please"}
 end
 
 def find_user
@@ -28,26 +27,25 @@ def delete_user
 end
 
 def create_administrative
-  @role ||= Role.first conditions: {:name => "Admin"}
+  @role = Role.create(:name => "admin")
   create_user
-  @user ||= {:roles => @role}
+  @user.roles << @role
 end
 
 def create_table_captain
-  @role ||= Role.first conditions: {:name => "tableCaptain"}
+  @role = Role.create(:name => "captain")
   create_user
-  @user ||= {:roles => @role}
+  @user.roles << @role
 end
 
 def sign_up
   delete_user
-  visit '/users/sign_up'
   fill_in "Name", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   fill_in "Password confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
-  find_user
+  click_button "Submit"
+  #find_user
 end
 
 def sign_in
@@ -57,7 +55,52 @@ def sign_in
   click_button "Sign in"
 end
 
+def add_event
+  visit '/events/new'
+  fill_in "Name", :with => "berkeley lunch"
+  fill_in "Location", :with => "Soda"
+  click_button "Create Event"
+end
+
+def delete_event
+  page.click_link "delete"
+end
+
+def add_table
+  #fill_in "physical_number", :with => "3"
+  click_button "Create Dining table"
+end
+
+def update_table
+  #fill_in "physical_number", :with => "3"
+  page.click_link "Cancel"
+  page.click_link "Back"
+end
+
+def delete_table
+  #fill_in "physical_number", :with => "3"
+  page.click_link "Back"
+end
+
 ### GIVEN ###
+Given /^I click "([^"]*)"$/ do |link|
+  page.click_link link
+end
+
+Given /^I am at create user page$/ do
+  visit '/users/new'
+end
+
+Given /^I logged in as admin$/ do
+  create_administrative
+  sign_in
+end
+
+Given /^I logged in as tableCaptain$/ do
+  create_table_captain
+  sign_in
+end
+
 Given /^I am not logged in$/ do
   visit '/users/sign_out'
 end
@@ -80,7 +123,13 @@ Given /^I exist as an unconfirmed user$/ do
   create_unconfirmed_user
 end
 
+
+
 ### WHEN ###
+When /^(?:|I )press "([^"]*)"$/ do |button|
+  click_button(button)
+end
+
 When /^I sign in with valid credentials$/ do
   create_visitor
   sign_in
@@ -88,14 +137,6 @@ end
 
 When /^I sign out$/ do
   visit '/users/sign_out'
-end
-
-When /^I am administrative/ do
-  create_administrative
-end
-
-When /^I am table captain/ do
-  create_table_captain
 end
 
 When /^I sign up with valid user data$/ do
@@ -144,23 +185,44 @@ end
 When /^I edit my account details$/ do
   click_link "Edit account"
   fill_in "Name", :with => "newname"
-  fill_in "Current password", :with => @visitor[:password]
-  click_button "Update"
+  fill_in "Password", :with => @visitor[:password]
+  fill_in "Password confirmation", :with => @visitor[:password_confirmation]
+  #click_button("Submit")
 end
 
 When /^I look at the list of users$/ do
   visit '/'
 end
 
+When /^I create an event/ do
+  add_event
+end
+
+When /^I edit event$/ do
+  fill_in "Name", :with => "big game"
+  fill_in "Location", :with => "New Soda"
+  click_button "Update Event"
+end
+
+When /^I add table$/ do
+  add_table
+end
+
+When /^I update table$/ do
+  update_table
+end
+
+When /^I delete table$/ do
+  delete_table
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
-  page.should_not have_content "Sign up"
   page.should_not have_content "Login"
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
   page.should have_content "Login"
   page.should_not have_content "Logout"
 end
@@ -174,27 +236,15 @@ Then /^I see a successful sign in message$/ do
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  page.should have_content "You need to sign in before continuing."
 end
 
-Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
-end
-
-Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
-end
-
-Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
-end
-
-Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+Then /^I should see an invalid message$/ do
+  page.should have_content "You need to sign in before continuing."
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content "Signed out successfully."
+  page.should have_content "You need to sign in before continuing."
 end
 
 Then /^I see an invalid login message$/ do
@@ -202,7 +252,7 @@ Then /^I see an invalid login message$/ do
 end
 
 Then /^I should see an account edited message$/ do
-  page.should have_content "You updated your account successfully."
+  page.should have_content "Edit account"
 end
 
 Then /^I should see my name$/ do
@@ -210,6 +260,19 @@ Then /^I should see my name$/ do
   page.should have_content @user[:name]
 end
 
-Then /^I should see "(.*)"/ do |content|
+Then /^I should see "(.*)"$/ do |content|
   page.should have_content content
+end
+
+Then /^I should not see "(.*)"$/ do |content|
+  page.should_not have_content content
+end
+
+
+Then /^I should see "([^"]*)" button$/ do |name|
+  find_button(name).should_not be_nil
+end
+
+Then /^I should see a link "([^"]*)"/ do |link|
+  page.has_link?(link).should be_true
 end
