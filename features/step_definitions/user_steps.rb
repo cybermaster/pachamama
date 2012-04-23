@@ -55,6 +55,33 @@ def sign_in
   click_button "Sign in"
 end
 
+def add_event
+  visit '/events/new'
+  fill_in "Name", :with => "berkeley lunch"
+  fill_in "Location", :with => "Soda"
+  click_button "Create Event"
+end
+
+def delete_event
+  page.click_link "delete"
+end
+
+def add_table
+  #fill_in "physical_number", :with => "3"
+  click_button "Create Dining table"
+end
+
+def update_table
+  #fill_in "physical_number", :with => "3"
+  page.click_link "Cancel"
+  page.click_link "Back"
+end
+
+def delete_table
+  #fill_in "physical_number", :with => "3"
+  page.click_link "Back"
+end
+
 ### GIVEN ###
 Given /^I click "([^"]*)"$/ do |link|
   page.click_link link
@@ -95,6 +122,8 @@ end
 Given /^I exist as an unconfirmed user$/ do
   create_unconfirmed_user
 end
+
+
 
 ### WHEN ###
 When /^(?:|I )press "([^"]*)"$/ do |button|
@@ -165,6 +194,28 @@ When /^I look at the list of users$/ do
   visit '/'
 end
 
+When /^I create an event/ do
+  add_event
+end
+
+When /^I edit event$/ do
+  fill_in "Name", :with => "big game"
+  fill_in "Location", :with => "New Soda"
+  click_button "Update Event"
+end
+
+When /^I add table$/ do
+  add_table
+end
+
+When /^I update table$/ do
+  update_table
+end
+
+When /^I delete table$/ do
+  delete_table
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -188,19 +239,7 @@ Then /^I should see a successful sign up message$/ do
   page.should have_content "You need to sign in before continuing."
 end
 
-Then /^I should see an invalid email message$/ do
-  page.should have_content "You need to sign in before continuing."
-end
-
-Then /^I should see a missing password message$/ do
-  page.should have_content "You need to sign in before continuing."
-end
-
-Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "You need to sign in before continuing."
-end
-
-Then /^I should see a mismatched password message$/ do
+Then /^I should see an invalid message$/ do
   page.should have_content "You need to sign in before continuing."
 end
 
@@ -224,6 +263,11 @@ end
 Then /^I should see "(.*)"$/ do |content|
   page.should have_content content
 end
+
+Then /^I should not see "(.*)"$/ do |content|
+  page.should_not have_content content
+end
+
 
 Then /^I should see "([^"]*)" button$/ do |name|
   find_button(name).should_not be_nil
