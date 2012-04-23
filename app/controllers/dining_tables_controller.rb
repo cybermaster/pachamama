@@ -20,8 +20,9 @@ class DiningTablesController < ApplicationController
 
   def new
     @dining_table = DiningTable.new
-    @table_captains = User.all
     @event_id = params[:event_id]
+    @dining_table.event_id = @event_id
+    @table_captains = User.all
 
   end
 

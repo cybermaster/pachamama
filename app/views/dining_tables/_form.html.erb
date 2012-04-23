@@ -5,7 +5,7 @@
         <div class="control-group">
             <%= f.label "event", :class => 'control-label' %>
             <div class="controls">
-                <%= collection_select(:event, :id, Event.all, :id, :name) %>
+                <%= collection_select(:event, :id, Event.all, :id, :name, :selected => @event_id) %>
             </div>
         </div>
 
