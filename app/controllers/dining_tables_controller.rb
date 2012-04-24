@@ -20,17 +20,19 @@ class DiningTablesController < ApplicationController
 
   def new
     @dining_table = DiningTable.new
-    @dining_table.group_number = DiningTable.count + 1
-    @table_captains = User.all
     @event_id = params[:event_id]
+    @dining_table.event_id = @event_id
+    @table_captains = User.all
+
   end
 
   def create
     user_info = params[:user]
     dining_table_info = params[:dining_table]
     event_info = params[:event]
+    group_number = DiningTable.where("event_id = ?", event_info[:id]).count + 1
     @dining_table = DiningTable.new(:physical_number => dining_table_info[:physical_number],
-                                    :group_number => dining_table_info[:group_number],
+                                    :group_number => group_number,
                                     :user_id => user_info[:id], :event_id =>event_info[:id] )
 
     if @dining_table.save

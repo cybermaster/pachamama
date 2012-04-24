@@ -24,8 +24,10 @@
 </p>
 <%= form_for @dining_table,:url => { :action => "set_table_leader"}, :html => { :class => 'form-horizontal' } do |f| %>
     <% form_tag :action => 'index' do %>
-    <%= select_tag "table_leader_id", options_from_collection_for_select(@dining_table.guests, :id, :name),
-                   :onChange => 'submit()'  %>
+        <%= select_tag "table_leader_id",
+                       options_from_collection_for_select(@dining_table.guests, :id, :name,
+                                                          @dining_table.table_leader_id),
+                                                          :onChange => 'submit()'  %>
                 <%#= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
     <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
 
