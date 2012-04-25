@@ -3,18 +3,14 @@ class EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @users = User.all
-    @current_user = current_user
-
-    if current_user.role?("admin")
-      @dining_tables = DiningTable.where("event_id = ")
-    else
-      @dining_tables = DiningTable.where("user_id = ?", current_user.id)
-    end
   end
 
   def show
-    @dining_tables = DiningTable.where("event_id = ?", params[:id])
+    if current_user.role? :admin
+        @dining_tables = DiningTable.where("event_id = ?", params[:id])
+    else
+      @dining_tables = DiningTable.where("event_id = ? AND user_id = ?", params[:id], current_user.id)
+    end
     #@event = Event.find(@dining_table.event_id)
     #@table_captain = User.find(@dining_table.user_id)
     #@guests = @dining_table.guests
