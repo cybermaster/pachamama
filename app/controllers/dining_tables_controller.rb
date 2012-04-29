@@ -16,6 +16,7 @@ class DiningTablesController < ApplicationController
 
   def edit
     @dining_table = DiningTable.find(params[:id])
+    @event_id = @dining_table.event_id
   end
 
   def new
@@ -51,7 +52,7 @@ class DiningTablesController < ApplicationController
 
     if @dining_table.update_attributes(:physical_number => dining_table_info[:physical_number],
                                        :group_number => dining_table_info[:group_number],
-                                       :user_id => user_info[:user_id])
+                                       :user_id => user_info[:id])
 
       redirect_to @dining_table, notice: 'Table was successfully updated.'
     else
