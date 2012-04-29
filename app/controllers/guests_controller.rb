@@ -38,7 +38,7 @@ class GuestsController < ApplicationController
     @guest = Guest.find(params[:id])
     if @guest.update_attributes(params[:guest])
 
-      redirect_to @guest.dining_table, notice: 'Guest was successfully updated.'
+      redirect_to dining_table_path(@guest.dining_table), notice: 'Guest was successfully updated.'
     else
       render action: "edit"
     end

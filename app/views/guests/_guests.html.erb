@@ -16,7 +16,7 @@
             <td><%= guest.email %></td>
             <td><%= guest.note %></td>
             <td>
-                <%= link_to 'Edit', edit_guest_path(guest.id), :class => 'btn btn-mini' %>
+                <%= link_to 'Edit', edit_guest_path( { :id => guest.id, :dining_table_id => @dining_table.id}), :class => 'btn btn-mini' %>
                 <%= link_to 'Remove', guest_path(guest), :method => :delete,
                             :confirm => "Are you sure you want to remove #{guest.name}",
                             :class => 'btn btn-mini btn-danger' %>
