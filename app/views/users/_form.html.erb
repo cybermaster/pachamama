@@ -1,46 +1,74 @@
-<%= form_for(@user, :url => {:action => "create"}) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
     </div>
-  <% end %>
-  <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <div class="control-group">
+    <%= f.label :encrypted_password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :encrypted_password, :class => 'text_field' %>
+    </div>
   </div>
-  <% if @current_method == "new" or "edit" %>
-    <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+  <div class="control-group">
+    <%= f.label :reset_password_token, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :reset_password_token, :class => 'text_field' %>
     </div>
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="control-group">
+    <%= f.label :reset_password_sent_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :reset_password_sent_at, :class => 'datetime_select' %>
     </div>
-  <% end %>
-  <% for role in Role.find(:all) %>
-    <div>
-      <% if current_user.role? :admin %>
-        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-        <%= role.name %>
-      <% end %>
-
+  </div>
+  <div class="control-group">
+    <%= f.label :remember_created_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :remember_created_at, :class => 'datetime_select' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Submit" %>
+  </div>
+  <div class="control-group">
+    <%= f.label :sign_in_count, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :sign_in_count, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :current_sign_in_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :current_sign_in_at, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_sign_in_at, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.datetime_select :last_sign_in_at, :class => 'datetime_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :current_sign_in_ip, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :current_sign_in_ip, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :last_sign_in_ip, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_sign_in_ip, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
   </div>
 
-
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
 <% end %>
