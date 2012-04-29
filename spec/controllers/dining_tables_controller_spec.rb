@@ -19,7 +19,6 @@ describe DiningTablesController do
       #controller.stub(:current_user) { @user }
       #controller.stub(:authenticate_user!).and_return true
       #sign_in @user
-      @dummy_guest = Guest.create! :name=>"Steven", :dining_table_id=>"1"
       @dummy_event = Event.create! :date=>"20120512", :location=>"cal"
     end
 
@@ -145,6 +144,37 @@ describe DiningTablesController do
         end
       end
     end
+      
+    describe "DELETE destroy" do
+      it "destroys the requested dining_table" do
+        dt = DiningTable.create! valid_attributes
+        expect {
+          delete :destroy, {:id => dt.to_param}, valid_session
+        }.to change(DiningTable, :count).by(-1)
+      end
+
+      it "redirects to the dining table" do
+        dt = DiningTable.create! valid_attributes
+        delete :destroy, {:id => dt.to_param}, valid_session
+        response.should redirect_to(@dummy_event)
+      end
+    end
+    
+    describe "set table leader" do
+      it "should assign a leader with leader id provided" do
+        dt = DiningTable.create! valid_attributes
+        put :set_table_leader, {:dining_table =>{:dining_table_id => dt.to_param}, :table_leader_id => 1}, valid_session
+        response.should redirect_to(dt)
+        assigns(:dining_table).table_leader_id.should == 1
+      end
+      
+      it "should assign a leader with leader id provided" do
+        dt = DiningTable.create! valid_attributes
+        put :set_table_leader, {:dining_table =>{:dining_table_id => dt.to_param}}, valid_session
+        response.should redirect_to(dt)
+        assigns(:dining_table).table_leader_id.should_not == 1
+      end
+    end
   end
 end
 
@@ -162,7 +192,6 @@ describe DiningTablesController do
       @ability.can :read, :all
       @ability.can :create, :all
       controller.stub(:current_ability) { @ability }
-      @dummy_guest = Guest.create! :name=>"Steven", :dining_table_id=>"1"
       @dummy_event = Event.create! :date=>"20120512", :location=>"cal"
     end
 
@@ -286,6 +315,20 @@ describe DiningTablesController do
           lambda {put :update, {:id => dt.to_param, :dining_table => {}, :user => {:id => 1}}, valid_session}.should raise_error
           #response.should render_template("edit")
         end
+      end
+    end
+    
+    describe "DELETE destroy" do
+      it "should fail to destroy the requested dining_table" do
+        dt = DiningTable.create! valid_attributes
+        lambda {delete :destroy, {:id => dt.to_param}, valid_session}.should raise_error
+      end
+    end
+    
+    describe "set table leader" do
+      it "should fail assign a leader no matter what" do
+        dt = DiningTable.create! valid_attributes
+        lambda {put :set_table_leader, {:dining_table =>{:dining_table_id => dt.to_param}, :table_leader_id => 1}, valid_session}.should raise_error
       end
     end
   end

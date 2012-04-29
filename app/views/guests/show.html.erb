@@ -1,0 +1,14 @@
+<h1> <%= @guest.name %> </h1>
+
+<p>
+    <b>Email</b><br>
+    <%= @guest.email %>
+</p>
+
+<p>
+    <b>Phone</b><br>
+    <%= @guest.phone %>
+</p>
+<div class="form-actions">
+    <%= link_to 'Back', root_path, :class => 'btn'  %>
+</div>

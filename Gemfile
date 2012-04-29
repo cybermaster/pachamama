@@ -21,3 +21,4 @@ gem "devise", ">= 2.1.0.rc"
 gem "twitter-bootstrap-rails", ">= 2.0.3"#, :group => :assets
 gem 'pg', :group => :production
 gem 'simplecov', :require => false, :group => :test
+gem "therubyracer"

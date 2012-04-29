@@ -142,6 +142,21 @@ describe EventsController do
         end
       end
     end
+    
+    describe "DELETE destroy" do
+      it "destroys the requested event" do
+        dt = Event.create! valid_attributes
+        expect {
+          delete :destroy, {:id => dt.to_param}, valid_session
+        }.to change(Event, :count).by(-1)
+      end
+
+      it "redirects to the event" do
+        dt = Event.create! valid_attributes
+        delete :destroy, {:id => dt.to_param}, valid_session
+        response.should redirect_to('/')
+      end
+    end
   end
   
   describe "Table Captain with limited permission" do
@@ -279,6 +294,13 @@ describe EventsController do
           lambda {put :update, {:id => e.to_param, :event => {}}, valid_session}.should raise_error
           #response.should render_template("edit")
         end
+      end
+    end
+    
+    describe "DELETE destroy" do
+      it "should fail to destroy the requested event" do
+        dt = Event.create! valid_attributes
+        lambda {delete :destroy, {:id => dt.to_param}, valid_session}.should raise_error
       end
     end
   end
