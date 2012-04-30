@@ -22,22 +22,22 @@
     <b>Table Leader</b><br>
     <%#= collection_select(:table_leader, :id, @dining_table.guests, :id, :name) %>
 </p>
-<%= form_for @dining_table,:url => { :action => "set_table_leader"}, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @dining_table, :url => {:action => "set_table_leader"}, :html => {:class => 'form-horizontal'} do |f| %>
     <% form_tag :action => 'index' do %>
         <%= select_tag "table_leader_id",
-                       options_from_collection_for_select(@dining_table.guests, :id, :name,
+                       options_from_collection_for_select(@dining_table.guests, :id, 'first_name' + 'last_name',
                                                           @dining_table.table_leader_id),
-                                                          :onChange => 'submit()'  %>
-                <%#= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
-    <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
+                       :onChange => 'submit()' %>
+        <%#= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
+        <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
 
     <% end %>
 <% end %>
 
 
 <%= render "guests/guests" %>
-<%= link_to 'Add Guest', new_guest_path( {:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
+<%= link_to 'Add Guest', new_guest_path({:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
 
 <div class="form-actions">
-    <%= link_to 'Back', event_path(@dining_table.event_id), :class => 'btn'  %>
+    <%= link_to 'Back', event_path(@dining_table.event_id), :class => 'btn' %>
 </div>

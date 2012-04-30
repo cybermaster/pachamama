@@ -11,8 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-
 ActiveRecord::Schema.define(:version => 20120417221043) do
 
   create_table "dining_tables", :force => true do |t|
@@ -34,8 +32,9 @@ ActiveRecord::Schema.define(:version => 20120417221043) do
   end
 
   create_table "guests", :force => true do |t|
-    t.string   "name"
-    t.integer  "phone"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
     t.string   "email"
     t.text     "note"
     t.integer  "dining_table_id"

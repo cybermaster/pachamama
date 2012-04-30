@@ -11,14 +11,15 @@
     <tbody>
     <% @guests.each do |guest| %>
         <tr>
-            <td><%= link_to guest.name, :controller => "guests", :action => "edit", :id => guest.id, :dining_table_id => @dining_table.id %></td>
+            <td><%= link_to (guest.first_name + " " + guest.last_name), :controller => "guests", :action => "edit",
+                            :id => guest.id, :dining_table_id => @dining_table.id %></td>
             <td><%= guest.phone %></td>
             <td><%= guest.email %></td>
             <td><%= guest.note %></td>
             <td>
                 <%= link_to 'Edit', edit_guest_path( { :id => guest.id, :dining_table_id => @dining_table.id}), :class => 'btn btn-mini' %>
                 <%= link_to 'Remove', guest_path(guest), :method => :delete,
-                            :confirm => "Are you sure you want to remove #{guest.name}",
+                            :confirm => "Are you sure you want to remove #{guest.first_name + " " + guest.last_name}",
                             :class => 'btn btn-mini btn-danger' %>
             </td>
         </tr>
