@@ -28,7 +28,7 @@
           <%= f.password_field :password_confirmation %>
         </div>
     <% end %>
-    <% for role in Role.find(:all) %>
+    <% for role in Role.all %>
         <div>
           <% if current_user.role? :admin %>
               <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
