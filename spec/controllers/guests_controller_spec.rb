@@ -17,7 +17,8 @@ describe GuestsController do
   end
 
   def valid_attributes
-    {:name=>"Steven",
+    {:first_name=>"Steven",
+     :last_name=>"Stern",
      :email=>"steven@steven.s",
      :dining_table_id => 1}
   end
