@@ -4,6 +4,6 @@
     <%= link_to 'Add Event', new_event_path, :class => 'btn btn-primary' %>
     <%= link_to 'Show Users', users_path, :class => 'btn btn-primary' %>
 <% else %>
-    <h2>Captain</h2>
+    <h2>Table Captain: <%= current_user.name %></h2>
 <% end %>
 <%= render "events/events" %>
