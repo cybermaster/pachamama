@@ -24,6 +24,9 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    if user.nil?
+      user = User.new
+    end
     if user.role? :admin or user.role? :captain
           can :manage, :all
     elsif user.role? :captain

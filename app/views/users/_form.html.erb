@@ -1,4 +1,4 @@
-<%= form_for(@user, :url => {:action => "create"}) do |f| %>
+<%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -28,11 +28,13 @@
           <%= f.password_field :password_confirmation %>
         </div>
     <% end %>
-    <% for role in Role.find(:all) %>
+    <% for role in Role.all %>
         <div>
           <% if current_user.role? :admin %>
+              <% if not role.name == 'guest' %>
               <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
               <%= role.name %>
+              <% end %>
           <% end %>
 
         </div>
