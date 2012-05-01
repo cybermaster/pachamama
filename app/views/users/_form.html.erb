@@ -32,7 +32,7 @@
         <div>
           <% if current_user.role? :admin %>
               <% if not role.name == 'guest' %>
-              <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+              <%= radio_button_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
               <%= role.name %>
               <% end %>
           <% end %>
