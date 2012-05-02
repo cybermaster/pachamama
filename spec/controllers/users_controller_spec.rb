@@ -9,6 +9,7 @@ describe UsersController do
     #sign_in @user
     @dummy_c_user = Object.new
     @dummy_c_user.stub(:id).and_return 1
+    @dummy_c_user.stub(:role?).with(:admin).and_return true
     
     @ability = Object.new
     @ability.extend(CanCan::Ability)

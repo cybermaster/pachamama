@@ -17,6 +17,12 @@ describe HomeController do
       get 'index'
       response.should be_success
     end
+    
+    it "should be successful with admin role" do
+      @user.stub(:role?).with(:Admin).and_return true
+      get 'index'
+      response.should be_success
+    end
   end
 
 end
