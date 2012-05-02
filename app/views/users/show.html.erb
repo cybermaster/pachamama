@@ -10,6 +10,11 @@
   <%= @user.name %>
 </p>
 
+<% if not user_signed_in? %>
+    <%= link_to t('.Login Again'),
+                new_user_session_path, :class => 'btn'  %>
+<% else %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               users_path, :class => 'btn'  %>
@@ -21,3 +26,4 @@
               :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
               :class => 'btn btn-danger' %>
 </div>
+<% end  %>
