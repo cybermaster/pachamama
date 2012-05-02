@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def show
     if current_user.role? :admin
-        @dining_tables = DiningTable.where("event_id = ?", params[:id])
+      @dining_tables = DiningTable.where("event_id = ?", params[:id])
     else
       @dining_tables = DiningTable.where("event_id = ? AND user_id = ?", params[:id], current_user.id)
     end
