@@ -4,14 +4,17 @@ Feature: Guest
 
   Background:
     Given I logged in as admin
+    And I return to the site
     And I click "Add Event"
     And I create an event
+    And I should see "Event was successfully added"
     And I sign out
 
 
   Scenario: I have no assigned table
     Given I logged in as tableCaptain
-    And I should see a link "berkeley lunch"
-    And I click "berkeley lunch"
+    And I return to the site
+    And I should see "UC Berkeley Lunch"
+    And I click "UC Berkeley Lunch"
     Then I should see "Table"
     Then I should see "Event"

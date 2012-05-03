@@ -5,14 +5,14 @@ Feature: Table
     Given I logged in as admin
     And I click "Add Event"
     And I create an event
-    And I click "berkeley lunch"
+    And I click "UC Berkeley Lunch"
     Then I should see "Add Table"
 
   Scenario: Successfully create a table
     When I click "Add Table"
     And I add table
     Then I should see "Table was successfully added"
-    And I should see "berkeley lunch"
+    And I should see "UC Berkeley Lunch"
     And I click "Back"
 
 
@@ -23,7 +23,3 @@ Feature: Table
     When I click "Edit Table"
     And I update table
 
-  Scenario: Successfully delete an event
-    Then I should see "berkeley lunch"
-    And I delete table
-    Then I should not see "berkeley Lunch"

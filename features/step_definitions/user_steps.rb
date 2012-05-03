@@ -57,7 +57,7 @@ end
 
 def add_event
   visit '/events/new'
-  fill_in "Name", :with => "berkeley lunch"
+  fill_in "Name", :with => "UC Berkeley Lunch"
   fill_in "Location", :with => "Soda"
   click_button "Create Event"
 end
@@ -79,7 +79,7 @@ end
 
 def delete_table
   #fill_in "physical_number", :with => "3"
-  page.click_link "Back"
+  page.click_button "Delete"
 end
 
 ### GIVEN ###

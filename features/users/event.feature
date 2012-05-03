@@ -24,3 +24,13 @@ Feature: Event
     Then I should see "Event was successfully added"
     And I should see "Delete"
     Then I click "Delete"
+    Then I should not see "UC Berkeley Lunch"
+
+  Scenario: Admin can see users
+    Given I logged in as admin
+    And I create an event
+    And I return to the site
+    When I click "UC Berkeley Lunch"
+    And I click "Add Table"
+    Then I should see "New Table"
+
