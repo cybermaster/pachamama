@@ -11,10 +11,7 @@ Feature: Guest
     And I sign out
 
 
-  Scenario: I have no assigned table
+  Scenario: TableCaptain have no assigned table
     Given I logged in as tableCaptain
     And I return to the site
-    And I should see "UC Berkeley Lunch"
-    And I click "UC Berkeley Lunch"
-    Then I should see "Table"
-    Then I should see "Event"
+    And I should not see "UC Berkeley Lunch"
