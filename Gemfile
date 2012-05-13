@@ -22,3 +22,4 @@ gem "twitter-bootstrap-rails", ">= 2.0.3"#, :group => :assets
 gem 'pg', :group => :production
 gem 'simplecov', :require => false, :group => :test
 gem "therubyracer"
+gem 'newrelic_rpm'
