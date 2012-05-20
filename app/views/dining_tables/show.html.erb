@@ -19,7 +19,7 @@
 </p>
 
 <p>
-    <b>Table Leader</b><br>
+    <b>Table Host</b><br>
     <%#= collection_select(:table_leader, :id, @dining_table.guests, :id, :name) %>
 </p>
 <%= form_for @dining_table, :url => {:action => "set_table_leader"}, :html => {:class => 'form-horizontal'} do |f| %>
