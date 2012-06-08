@@ -27,16 +27,21 @@
         <%= select_tag "table_leader_id",
                        options_from_collection_for_select(@dining_table.guests, :id, 'first_name' + 'last_name',
                                                           @dining_table.table_leader_id),
-                       :onChange => 'submit()' %>
-        <%#= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
-        <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
-
+                                                          :onChange => 'submit()' %>
+               <%= f.hidden_field :dining_table_id, :value => @dining_table.id %>
     <% end %>
 <% end %>
 
 
 <%= render "guests/guests" %>
-<%= link_to 'Add Guest', new_guest_path({:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
+    <% if @guests.count < 12 %>
+        <%= link_to 'Add Guest', new_guest_path({:dining_table_id => @dining_table.id}), :class => 'btn btn-primary' %>
+    <% else %>
+        <div class="alert alert-info">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+            You have filled your table. If you need another table, please contact Christy at (415) 561-4522 ext 127 or christy@pachamama.org
+        </div>
+    <% end %>
 
 <div class="form-actions">
     <%= link_to 'Back', event_path(@dining_table.event_id), :class => 'btn' %>

@@ -10,6 +10,7 @@
     </tr>
     </thead>
     <tbody>
+
     <% @guests.each do |guest| %>
         <tr>
             <td><%= link_to (guest.first_name + " " + guest.last_name), :controller => "guests", :action => "edit",

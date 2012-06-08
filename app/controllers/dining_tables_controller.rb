@@ -46,9 +46,7 @@ class DiningTablesController < ApplicationController
   def update
     user_info = params[:user]
     dining_table_info = params[:dining_table]
-    #@dining_table = DiningTable.find(params[:id])
     @dining_table = DiningTable.find(params[:id])
-
 
     if @dining_table.update_attributes(:physical_number => dining_table_info[:physical_number],
                                        :group_number => dining_table_info[:group_number],

@@ -15,20 +15,15 @@ class GuestsController < ApplicationController
 
   def new
     @guest = Guest.new
-    #@dining_table.group_number = DiningTable.count + 1
-    #@table_captains = User.all
   end
 
   def create
-    #@guest = Guest.new(:name => params[:name], :name => params[:email], :name => params[:email],
-    #                   :note => params[:note],  :dining_table_id => params[:dining_table_id])
-    @guest = Guest.new(params[:guest])
 
+    @guest = Guest.new(params[:guest])
 
     if @guest.save
       # Todo fix line below with the "1"
       redirect_to dining_table_path(@guest.dining_table_id), notice: 'Guest was successfully added.'
-
     else
       render action: "new"
     end
