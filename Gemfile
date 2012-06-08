@@ -9,6 +9,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'client_side_validations'
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "factory_girl_rails", ">= 2.0.0.rc", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
