@@ -1,12 +1,22 @@
 <%= simple_form_for @guest, :validate => true, :html => { :class => 'form-horizontal' } do |f| %>
-    <%= f.input :first_name, :placeholder => 'John', :hint => "Required" %>
+    <% if @guest.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+
+          <ul>
+            <% @guest.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.input :first_name, :placeholder => 'John', :hint => "Required", :error_html => { :id => 'first_name_error'} %>
     <%= f.input :last_name, :placeholder => 'Doe', :hint => "Required" %>
     <%= f.input :phone, :placeholder => '415 555 1234'%>
     <%= f.input :email, :placeholder => 'user@domain.com' %>
     <%= f.input :note,:as => :string %>
     <%= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
 
-    <% f.error :first_name, :id => 'required field' %>
     <div class="form-actions">
       <%= f.button :submit, :class => 'btn btn-primary'%>
       <%= link_to 'Cancel', dining_table_path(params[:dining_table_id]), :class => 'btn' %>

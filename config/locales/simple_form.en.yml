@@ -10,6 +10,9 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+      guest:
+        new:
+          first_name: "First Name is required"
     # Labels and hints examples
     # labels:
     #   defaults:
