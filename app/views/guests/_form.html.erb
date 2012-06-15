@@ -1,52 +1,15 @@
-<%= form_for @guest, :validate => true, :html => { :class => 'form-horizontal' } do |f| %>
-    <fieldset>
-        <legend><%= controller.action_name.capitalize %> Guest</legend>
+<%= simple_form_for @guest, :validate => true, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.input :first_name, :placeholder => 'John', :hint => "Required" %>
+    <%= f.input :last_name, :placeholder => 'Doe', :hint => "Required" %>
+    <%= f.input :phone, :placeholder => '415 555 1234'%>
+    <%= f.input :email, :placeholder => 'user@domain.com' %>
+    <%= f.input :note,:as => :string %>
+    <%= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
 
-        <div class="control-group">
-            <%= f.label :first_name, :class => 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :first_name, :class => 'text_field' %>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <%= f.label :last_name, :class => 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :last_name, :class => 'text_field' %>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <%= f.label :phone, :class => 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :phone, :class => 'text_field' %>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <%= f.label :email, :class => 'control-label' %>
-            <div class="controls">
-                <%= f.email_field :email, :class => 'text_field' %>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <%= f.label :note, :class => 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :note, :class => 'text_field' %>
-            </div>
-        </div>
-
-        <div class="control-group">
-            <div class="controls">
-                <%= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <%= f.submit nil, :class => 'btn btn-primary' %>
-            <%= link_to 'Cancel', dining_table_path(params[:dining_table_id]), :class => 'btn' %>
-        </div>
-    </fieldset>
+    <% f.error :first_name, :id => 'required field' %>
+    <div class="form-actions">
+      <%= f.button :submit, :class => 'btn btn-primary'%>
+      <%= link_to 'Cancel', dining_table_path(params[:dining_table_id]), :class => 'btn' %>
+    </div>
 <% end %>
 

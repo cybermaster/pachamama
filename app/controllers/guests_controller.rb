@@ -25,7 +25,8 @@ class GuestsController < ApplicationController
       # Todo fix line below with the "1"
       redirect_to dining_table_path(@guest.dining_table_id), notice: 'Guest was successfully added.'
     else
-      render action: "new"
+      format.html { render action: "new" }
+      #format.xml  { render :xml => @guest.errors, notice: 'Required fields must be filled'}
     end
   end
 
@@ -35,7 +36,8 @@ class GuestsController < ApplicationController
 
       redirect_to dining_table_path(@guest.dining_table), notice: 'Guest was successfully updated.'
     else
-      render action: "edit"
+      format.html { render action: "edit" }
+      #format.xml  { render :xml => @guest.errors, :status => :unprocessable_entity }
     end
   end
 

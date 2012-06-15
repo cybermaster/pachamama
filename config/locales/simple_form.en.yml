@@ -19,8 +19,9 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+    hints:
+      guest:
+        new:
+          first_name: "First Name can not be blank"
+          last_name: "Last Name can not be blank"
 
