@@ -5,7 +5,7 @@
         <div class="control-group">
             <%= f.label "event", :class => 'control-label' %>
             <div class="controls">
-                <%= collection_select(:event, :id, Event.all, :id, :name, :selected => @event_id) %>
+                <%= collection_select(:event, :id, Event.all, :id, :name, :selected => @event.id) %>
             </div>
         </div>
 
@@ -31,9 +31,17 @@
         </div>
 
 
+        <div class="control-group">
+            <%= f.label "Number of seats", :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :seats, :class => 'text_field' %>
+            </div>
+        </div>
+
+
         <div class="form-actions">
             <%= f.submit nil, :class => 'btn btn-primary' %>
-            <%= link_to 'Cancel', event_path(@event_id), :class => 'btn' %>
+            <%= link_to 'Cancel', event_path(@event), :class => 'btn' %>
         </div>
     </fieldset>
 <% end %>

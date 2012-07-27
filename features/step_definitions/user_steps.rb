@@ -40,7 +40,7 @@ end
 
 def sign_up
   delete_user
-  fill_in "Name", :with => @visitor[:name]
+  fill_in "First name", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   fill_in "Password confirmation", :with => @visitor[:password_confirmation]
@@ -184,7 +184,7 @@ end
 
 When /^I edit my account details$/ do
   click_link "Edit account"
-  fill_in "Name", :with => "newname"
+  fill_in "First name", :with => "newname"
   fill_in "Password", :with => @visitor[:password]
   fill_in "Password confirmation", :with => @visitor[:password_confirmation]
   #click_button("Submit")

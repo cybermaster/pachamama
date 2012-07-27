@@ -4,6 +4,9 @@
         <th>Event</th>
         <th>Location</th>
         <th>Date</th>
+        <th># Tables</th>
+        <th># Assigned</th>
+        <th>Capacity</th>
     </tr>
     </thead>
     <tbody>
@@ -12,6 +15,9 @@
             <td><%= link_to event.name, event_path(event.id) %></td>
             <td><%= event.location %></td>
             <td><%= event.date %></td>
+            <td><%= event.dining_tables.size %></td>
+            <td><%= (event.dining_tables.select {|e| e.assigned?}).size %></td>
+            <td><%= event.capacity %></td>
             <td>
                 <% if current_user.role? :admin %>
                     <%= link_to 'Edit', edit_event_path(event.id), :class => 'btn btn-mini' %>

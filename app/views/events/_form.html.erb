@@ -23,6 +23,28 @@
             </div>
         </div>
 
+
+        <div class="control-group">
+            <%= f.label 'num tables', :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :dining_table_count, :class => 'text_field' %>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <%= f.label :capacity, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :capacity, :class => 'text_field' %>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <%= f.label :default_seats_per_table, :class => 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :default_seats_per_table, :class => 'text_field' %>
+            </div>
+        </div>
+        
         <div class="form-actions">
             <%= f.submit nil, :class => 'btn btn-primary' %>
             <%= link_to 'Cancel', root_path, :class => 'btn' %>

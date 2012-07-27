@@ -1,0 +1,9 @@
+Admin must be able to download registrant lists in .csv or .xls format including all associated information (event name, group number, table number, table captain, table hostname.)
+On "Add table" screen, admin should choose the "Group Number" from a drop down list.  The drop down list is determined by the number of tables entered when creating the event.  It should not allow the admin to select numbers that have already been used (perhaps grey these out).  If the admin updates the number of table for the event, then it needs to dynamically be updated here. 
+When granted multiple tables, User must be required to assign a Table Host to each table
+On admin view event drilldown, add columns: number of seats assigned per table, number of registered guests, number of confirmed guests
+Make sure that "Physical Number" field doesn't display to the user
+Admin must be able to create Users by entering their first and last name, email address, and create a new password for them
+Admin can assign access capabilities to new users - either "Admin" role or "User" role
+On admin view homepage, add columns: number of tables for event, number of tables assigned, capacity of event (pulled from when admin creates event), number of guests registered, number of guests confirmed; number of table captains
+

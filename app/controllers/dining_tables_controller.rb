@@ -16,15 +16,15 @@ class DiningTablesController < ApplicationController
 
   def edit
     @dining_table = DiningTable.find(params[:id])
-    @event_id = @dining_table.event_id
+    @event = @dining_table.event
   end
 
   def new
     @dining_table = DiningTable.new
-    @event_id = params[:event_id]
+    @event = Event.find_by_id(params[:event_id])
     @dining_table.event_id = @event_id
     @table_captains = User.all
-
+    @dining_table.seats = @event.default_seats_per_table if @event
   end
 
   def create
@@ -60,10 +60,9 @@ class DiningTablesController < ApplicationController
 
   def destroy
     @dining_table = DiningTable.find(params[:id])
+    event = @dining_table.event
     @dining_table.destroy
-
-    redirect_to event_path(params[:event])
-
+    redirect_to event_path(event)
   end
 
   def set_table_leader

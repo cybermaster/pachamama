@@ -19,7 +19,7 @@ describe UsersController do
   end
   
   def valid_attributes
-    {:name => "Steven",
+    {:first_name => "Steven",
      :email=>"steven@steven.steven",
      :password => "asdfgh"}
   end
