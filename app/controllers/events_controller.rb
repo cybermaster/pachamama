@@ -54,8 +54,24 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-
     redirect_to root_path
-
   end
+  
+  
+  def download_guests
+  require 'csv'
+    headers = %w'event_name group_number table_number table_captain table_hostname email phone '
+    @event = Event.find(params[:id])
+    csv_string = CSV.generate do |csv|
+      csv<<headers
+      @event.guests.each do  |guest|
+        csv<< (headers.collect {|e| guest.send(e)})
+      end
+    end
+    send_data csv_string,
+    :type => 'text/csv; charset=iso-8859-1; header=present',
+    :disposition => "attachment; filename= guests_" +(Date.today.strftime '%m-%b').downcase+".csv"
+  end 
+
+
 end

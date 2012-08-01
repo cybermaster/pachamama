@@ -29,27 +29,28 @@ class DiningTablesController < ApplicationController
 
   def create
     user_info = params[:user]
-    dining_table_info = params[:dining_table]
+    pdt = params[:dining_table]
     event_info = params[:event]
     group_number = DiningTable.where("event_id = ?", event_info[:id]).count + 1
-    @dining_table = DiningTable.new(:physical_number => dining_table_info[:physical_number],
+    @dining_table = DiningTable.new(:physical_number => pdt[:physical_number],
                                     :group_number => group_number,
-                                    :user_id => user_info[:id], :event_id =>event_info[:id] )
+                                    :user_id => user_info[:id], :event_id =>event_info[:id],:seats => pdt[:seats] )
 
     if @dining_table.save
       redirect_to @dining_table, notice: 'Table was successfully added.'
     else
+    #todo: need some better display of error
       render action: "new"
     end
   end
 
   def update
     user_info = params[:user]
-    dining_table_info = params[:dining_table]
+    pdt = params[:dining_table]
     @dining_table = DiningTable.find(params[:id])
 
-    if @dining_table.update_attributes(:physical_number => dining_table_info[:physical_number],
-                                       :group_number => dining_table_info[:group_number],
+    if @dining_table.update_attributes(:physical_number => pdt[:physical_number],
+                                       :group_number => pdt[:group_number],
                                        :user_id => user_info[:id])
 
       redirect_to @dining_table, notice: 'Table was successfully updated.'
@@ -66,8 +67,8 @@ class DiningTablesController < ApplicationController
   end
 
   def set_table_leader
-    dining_table_info = params[:dining_table]
-    @dining_table = DiningTable.find(dining_table_info[:dining_table_id])
+    pdt = params[:dining_table]
+    @dining_table = DiningTable.find(pdt[:dining_table_id])
 
     if @dining_table.update_attributes(:table_leader_id => params[:table_leader_id])
       redirect_to @dining_table, notice: 'Leader was successfully set.'

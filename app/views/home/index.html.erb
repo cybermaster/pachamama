@@ -6,4 +6,4 @@
 <% else %>
     <h2>Table Captain: <%= current_user.name %></h2>
 <% end %>
-<%= render "events/events" %>
+<%= render(@events.empty? ? "table_captain_intro" :  "events/events") %>

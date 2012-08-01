@@ -14,6 +14,10 @@ Pacha2::Application.routes.draw do
   resources :events
   resources :users#, :only => :show
 
+  devise_scope :events do
+    get "/download_guests" => "events#download_guests", :as => :download_guests
+  end
+  
   devise_scope :users do
     put "/users" => "users#update"
     get "/editcurrent" => "users#editcurrent", :as => :editcurrent

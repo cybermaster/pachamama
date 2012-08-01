@@ -15,7 +15,7 @@
     <%= f.input :phone, :placeholder => '415 555 1234'%>
     <%= f.input :email, :placeholder => 'user@domain.com' %>
     <%= f.input :note,:as => :string %>
-    <%= f.hidden_field :dining_table_id, :value => params[:dining_table_id] %>
+    <%= hidden_field_tag :dining_table_id,   params[:dining_table_id] %>
 
     <div class="form-actions">
       <%= f.button :submit, :class => 'btn btn-primary'%>

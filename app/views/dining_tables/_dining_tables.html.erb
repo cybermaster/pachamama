@@ -1,22 +1,32 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Table</th>
-        <th>Event</th>
+        <th>Table</th> 
+        <th> Seats Assigned </th>
+        <th> Registered Guests </th>
+        <th> Confirmed Guests </th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
-    <% @dining_tables.each do |diningTable| %>
+    <% @dining_tables.each do |dining_table| %>
         <tr>
-            <td><%= link_to "Group  #{diningTable.group_number} - #{diningTable.user.name}", dining_table_path(diningTable.id) %></td>
-            <td><%= diningTable.event.name %></td>
-
-
+            <td>
+              <%= link_to "Group  #{dining_table.group_number} - #{dining_table.user.name}", dining_table_path(dining_table.id) %>
+            </td>
+            <td>
+              <%= dining_table.seats.to_i  %></td>
+            </td>
+            <td>
+              <%= dining_table.guests.size  %></td>
+            </td>
+            <td>
+              <%= dining_table.guests.select {|e| e.confirmed?}.size  %></td>
+            </td>
             <td>
             <% if current_user.role? :admin %>
-                    <%= link_to 'Edit Table', edit_dining_table_path(diningTable.id), :class => 'btn btn-mini' %>
-                    <%= link_to 'Delete', dining_table_path(diningTable, :event => diningTable.event), :method => :delete,
+                    <%= link_to 'Edit Table', edit_dining_table_path(dining_table.id), :class => 'btn btn-mini' %>
+                    <%= link_to 'Delete', dining_table_path(dining_table, :event => dining_table.event), :method => :delete,
                                 :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger'%>
             <% end %>
             </td>

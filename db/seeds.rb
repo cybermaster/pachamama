@@ -22,5 +22,5 @@ user2.roles << captain
 # DiningTable.create! :physicalNumber => '1' :groupNumber => '1', :user_id => admin1.id, :event_id => '1'
 event = Event.create! :dining_table_count => 12,:capacity => 240,:default_seats_per_table => 20,
 :date => Date.civil(2012, 5, 5), :location => 'UC Berkeley', :name => 'UC Berkeley Lunch'
-DiningTable.create! :physical_number => 1, :group_number => 1, :user_id => user1.id, :event_id => event.id
+DiningTable.create! :physical_number => 1, :group_number => 1, :user_id => user1.id, :seats => 12,:event_id => event.id
 

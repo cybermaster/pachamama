@@ -4,9 +4,12 @@
         <th>Event</th>
         <th>Location</th>
         <th>Date</th>
-        <th># Tables</th>
-        <th># Assigned</th>
+        <th> Tables</th>
+        <th>Assigned</th>
         <th>Capacity</th>
+        <th>Guests</th>
+        <th> Confirmed</th>
+        <th> Captains</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +21,9 @@
             <td><%= event.dining_tables.size %></td>
             <td><%= (event.dining_tables.select {|e| e.assigned?}).size %></td>
             <td><%= event.capacity %></td>
+            <td><%= event.guests.size %></td>
+            <td><%= (event.guests.select {|g| g.confirmed?}).size %></td>
+            <td><%= event.table_captains.size %></td>
             <td>
                 <% if current_user.role? :admin %>
                     <%= link_to 'Edit', edit_event_path(event.id), :class => 'btn btn-mini' %>
