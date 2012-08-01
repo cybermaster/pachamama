@@ -17,6 +17,9 @@ class DiningTablesController < ApplicationController
   def edit
     @dining_table = DiningTable.find(params[:id])
     @event = @dining_table.event
+    @tables = ['']
+    (1..@event.dining_table_count).each {|n|@tables << n.to_s }
+
   end
 
   def new
@@ -25,6 +28,8 @@ class DiningTablesController < ApplicationController
     @dining_table.event_id = @event_id
     @table_captains = User.all
     @dining_table.seats = @event.default_seats_per_table if @event
+    @tables = []
+    (1..@event.dining_table_count).each {|n|@tables << n.to_s unless @event.dining_tables.detect {|e| e.group_number.to_i==n}}
   end
 
   def create
