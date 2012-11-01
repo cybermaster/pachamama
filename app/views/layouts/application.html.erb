@@ -30,7 +30,9 @@
         <div class="content">
            <div class="row">
             <div class="span9">
+                          <%= "Editing Disabled" if true or  @event.disabled? %>
               <% flash.each do |name, msg| %>
+
                 <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
                   <a class="close" data-dismiss="alert">×</a>
                   <%= msg %>
