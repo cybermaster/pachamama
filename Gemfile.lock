@@ -112,7 +112,7 @@ GEM
     mini_portile2 (2.8.1)
     multi_json (1.15.0)
     multi_test (1.1.0)
-    newrelic_rpm (3.4.0.1)
+    newrelic_rpm (3.5.3.24)
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
